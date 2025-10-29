@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/29 10:46:02 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/10/29 16:39:28 by tvinogra         ###   ########.fr       */
+/*   Created: 2025/10/29 16:36:00 by tvinogra          #+#    #+#             */
+/*   Updated: 2025/10/29 16:39:34 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-# include <unistd.h> 
-# include <stdlib.h>
-# include <stdarg.h>
-# include <stdio.h>
-
-int	ft_printf(const char *format, ...);
-int	ft_print_char(int c);
-
-#endif
+int	ft_print_char(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}

@@ -6,7 +6,7 @@
 #    By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/29 10:42:51 by tvinogra          #+#    #+#              #
-#    Updated: 2025/10/29 10:52:56 by tvinogra         ###   ########.fr        #
+#    Updated: 2025/10/29 16:46:32 by tvinogra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ ARFLAGS = rcs
 RM = rm -f
 
 SRCS = \
-ft_printf.c
+ft_printf.c \
+ft_print_char.c
 
 OBJS = $(SRCS:.c=.o)
 
