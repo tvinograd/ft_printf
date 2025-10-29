@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:46:02 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/10/29 10:54:01 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/10/29 13:16:37 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-int	ft_printf(const char *, ...)
+int	ft_printf(const char *, ...);
 
 #endif
