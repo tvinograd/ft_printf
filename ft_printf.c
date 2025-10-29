@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:48:31 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/10/29 21:11:48 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/10/29 23:33:31 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	ft_printf(const char *format, ...)
 			i++;
 			if (format[i] == 'c')
 				count += ft_print_char(va_arg(args, int));
+			else if (format[i] == 's')
+				count += ft_print_str(va_arg(args, char *));
 		}
 		else
 		{
@@ -51,8 +53,16 @@ int	main(void)
 	printf_result = printf("Char: %c\n", 'A');
 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 	
-	my_result = ft_printf("%c %c %c\n", 'A', 'B', 'C');
-	printf_result = printf("%c %c %c\n", 'A', 'B', 'C');
+	my_result = ft_printf("Chars: %c %c %c\n", 'A', 'B', 'C');
+	printf_result = printf("Chars: %c %c %c\n", 'A', 'B', 'C');
+	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+	
+	my_result = ft_printf("String: Hello, %s\n", "my name is Tatiana");
+	printf_result = printf("String: Hello, %s\n", "my name is Tatiana");
+	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+	
+	my_result = ft_printf("NULL: %s\n", NULL);
+	printf_result = printf("NULL: %s\n", (char *)NULL);
 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 	
 	return (0);
