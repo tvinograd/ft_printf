@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:48:31 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/10/29 23:33:31 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/10/31 16:42:46 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ int	ft_printf(const char *format, ...)
 				count += ft_print_char(va_arg(args, int));
 			else if (format[i] == 's')
 				count += ft_print_str(va_arg(args, char *));
+			else if (format[i] == '%')
+			{
+				write(1, "%", 1);
+				count++;
+			}
 		}
 		else
 		{
@@ -63,6 +68,10 @@ int	main(void)
 	
 	my_result = ft_printf("NULL: %s\n", NULL);
 	printf_result = printf("NULL: %s\n", (char *)NULL);
+	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+	
+	my_result = ft_printf("Percentage: %%\n");
+	printf_result = printf("Percentage: %%\n");
 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 	
 	return (0);
