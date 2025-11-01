@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:48:31 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/01 12:42:21 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/01 23:03:17 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ int	ft_printf(const char *format, ...)
 				count += ft_print_int(va_arg(args, int));
 			else if (format[i] == 'u')
 				count += ft_print_unsign_int(va_arg(args, unsigned int));
+			else if (format[i] == 'x')
+				count += ft_print_hex(va_arg(args, unsigned int), 0);
+			else if (format[i] == 'X')
+				count += ft_print_hex(va_arg(args, unsigned int), 1);
 		}
 		else
 		{
@@ -88,6 +92,14 @@ int	main(void)
 	
 	my_result = ft_printf("Unsigned decimal (base 10): %u\n", 42);
 	printf_result = printf("Unsigned decimal (base 10): %u\n", 42);
+	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+	
+	my_result = ft_printf("Hexidecimal lowercase: %x\n", 42);
+	printf_result = printf("Hexidecimal lowercase: %x\n", 42);
+	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+	
+	my_result = ft_printf("Hexidecimal uppercase: %X\n", 42);
+	printf_result = printf("Hexidecimal uppercase: %X\n", 42);
 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 	
 	return (0);
