@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:48:31 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/10/31 16:42:46 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/01 12:21:31 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	ft_printf(const char *format, ...)
 				write(1, "%", 1);
 				count++;
 			}
+			else if (format[i] == 'd' || format[i] == 'i')
+				count += ft_print_int(va_arg(args, int));
 		}
 		else
 		{
@@ -72,6 +74,14 @@ int	main(void)
 	
 	my_result = ft_printf("Percentage: %%\n");
 	printf_result = printf("Percentage: %%\n");
+	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+	
+	my_result = ft_printf("Decimal (base 10): %d\n", 42);
+	printf_result = printf("Decimal (base 10): %d\n", 42);
+	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+	
+	my_result = ft_printf("Integer (base 10): %i\n", 42);
+	printf_result = printf("Integer (base 10): %i\n", 42);
 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 	
 	return (0);

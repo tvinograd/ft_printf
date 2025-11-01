@@ -6,7 +6,7 @@
 #    By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/29 10:42:51 by tvinogra          #+#    #+#              #
-#    Updated: 2025/10/29 23:23:52 by tvinogra         ###   ########.fr        #
+#    Updated: 2025/10/31 16:49:43 by tvinogra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 SRCS = \
 ft_printf.c \
 ft_print_char.c \
-ft_print_str.c
+ft_print_str.c \
+ft_print_int.c
 
 OBJS = $(SRCS:.c=.o)
 
