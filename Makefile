@@ -6,7 +6,7 @@
 #    By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/29 10:42:51 by tvinogra          #+#    #+#              #
-#    Updated: 2025/11/01 23:03:03 by tvinogra         ###   ########.fr        #
+#    Updated: 2025/11/01 23:12:19 by tvinogra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ ft_print_char.c \
 ft_print_str.c \
 ft_print_int.c \
 ft_print_unsign_int.c \
-ft_print_hex.c
+ft_print_hex.c \
+ft_print_ptr.c
 
 OBJS = $(SRCS:.c=.o)
 

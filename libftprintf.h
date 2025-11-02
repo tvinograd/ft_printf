@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:46:02 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/01 13:06:36 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/01 23:12:26 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	ft_print_str(char *str);
 int	ft_print_int(int n);
 int	ft_print_unsign_int(unsigned int n);
 int	ft_print_hex(unsigned int n, int uppercase);
+int ft_print_ptr(void *ptr);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:48:31 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/01 23:03:17 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/01 23:39:07 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	ft_printf(const char *format, ...)
 				count += ft_print_hex(va_arg(args, unsigned int), 0);
 			else if (format[i] == 'X')
 				count += ft_print_hex(va_arg(args, unsigned int), 1);
+			else if (format[i] == 'p')
+				count += ft_print_ptr(va_arg(args, void *));
 		}
 		else
 		{
@@ -100,6 +102,19 @@ int	main(void)
 	
 	my_result = ft_printf("Hexidecimal uppercase: %X\n", 42);
 	printf_result = printf("Hexidecimal uppercase: %X\n", 42);
+	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+	
+	my_result = ft_printf("Hexidecimal uppercase: %X\n", 42);
+	printf_result = printf("Hexidecimal uppercase: %X\n", 42);
+	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+	
+	char	*str = "Hello";
+	my_result = ft_printf("Address: %p\n", str);
+	printf_result = printf("Address: %p\n", (void *)str);
+	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+	
+	my_result = ft_printf("NULL pointer: %p\n", NULL);
+	printf_result = printf("NULL pointer: %p\n", NULL);
 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 	
 	return (0);
