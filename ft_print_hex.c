@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 12:59:29 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/01 23:02:55 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/02 13:52:27 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_print_hex(unsigned int n, int uppercase)
 	char	*hex_digits;
 	char	*str;
 	int		len;
-	
+
 	if (uppercase)
 		hex_digits = "0123456789ABCDEF";
 	else
