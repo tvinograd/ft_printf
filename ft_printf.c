@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:48:31 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/02 15:43:05 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/02 16:34:33 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_conversion(char specifier, va_list args)
 {
 	int	result;
-	
+
 	result = 0;
 	if (specifier == 'c')
 		result = ft_print_char(va_arg(args, int));
@@ -40,6 +40,25 @@ static int	ft_conversion(char specifier, va_list args)
 	return (result);
 }
 
+static int	ft_format(const char *format, int *i, va_list args)
+{
+	int	result;
+
+	if (format[*i] == '%' && format[++(*i)])
+	{
+		result = ft_conversion(format[*i], args);
+		if (result == -1)
+			return (-1);
+		return (result);
+	}
+	else
+	{
+		if (write(1, &format[*i], 1) == -1)
+			return (-1);
+		return (1);
+	}
+}
+
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
@@ -54,19 +73,10 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	while (format[i])
 	{
-		if (format[i] == '%' && format[++i])
-		{
-			result = ft_conversion(format[i], args);
-			if (result == -1)
-				return (-1);
-			count += result;
-		}
-		else
-		{
-			if (write(1, &format[i], 1) == -1)
-				return (-1);
-			count++;
-		}
+		result = ft_format(format, &i, args);
+		if (result == -1)
+			return (-1);
+		count += result;
 		i++;
 	}
 	va_end(args);
@@ -135,9 +145,9 @@ int	ft_printf(const char *format, ...)
 // 	printf_result = printf("Hexidecimal uppercase: %X\n", 42);
 // 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 
-// 	char	*str = "Hello";
-// 	my_result = ft_printf("Address: %p\n", str);
-// 	printf_result = printf("Address: %p\n", (void *)str);
+// 	char	*str1 = "Hello";
+// 	my_result = ft_printf("Address: %p\n", str1);
+// 	printf_result = printf("Address: %p\n", (void *)str1);
 // 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 
 // 	my_result = ft_printf("NULL pointer: %p\n", NULL);
