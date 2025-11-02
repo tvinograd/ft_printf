@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 23:06:56 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/02 15:48:56 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/02 16:38:44 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_put_ptr(unsigned long n)
 {
 	char	*hex_digits;
 	int		count;
-	
+
 	hex_digits = "0123456789abcdef";
 	count = 0;
 	if (n >= 16)
@@ -34,7 +34,7 @@ static int	ft_put_ptr(unsigned long n)
 			return (-1);
 		count = 1;
 	}
-	return(count);
+	return (count);
 }
 
 int	ft_print_ptr(void *ptr)
