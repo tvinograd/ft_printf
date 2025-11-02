@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 12:59:29 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/02 13:52:27 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/02 15:18:29 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_print_hex(unsigned int n, int uppercase)
 	len = ft_hex_len(n);
 	str = (char *)malloc((len + 1) * sizeof(char));
 	if (!str)
-		return (0);
+		return (-1);
 	str[len] = '\0';
 	if (n == 0)
 		str[0] = '0';
@@ -50,7 +50,11 @@ int	ft_print_hex(unsigned int n, int uppercase)
 		n /= 16;
 	}
 	len = ft_strlen(str);
-	ft_putstr_fd(str, 1);
+	if (write(1, str, len) == -1)
+	{
+		free(str);
+		return (-1);
+	}
 	free(str);
 	return (len);
 }

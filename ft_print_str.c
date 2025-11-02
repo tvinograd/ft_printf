@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 21:15:28 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/10/29 22:56:01 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/02 15:11:21 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 int	ft_print_str(char *str)
 {
+	int	len;
+
 	if (str == NULL)
-	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
-	}
-	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
+		str = "(null)";
+	len = ft_strlen(str);
+	if (write(1, str, len) == -1)
+		return (-1);
+	return (len);
 }
 
 // int	main(void)

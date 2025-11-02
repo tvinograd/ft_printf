@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 12:28:03 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/01 12:41:41 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/02 15:16:25 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_print_unsign_int(unsigned int n)
 	len = ft_unsign_int_len(n);
 	str = (char *)malloc((len + 1) * sizeof(char));
 	if (!str)
-		return (0);
+		return (-1);
 	str[len] = '\0';
 	if (n == 0)
 		str[0] = '0';
@@ -45,7 +45,11 @@ int	ft_print_unsign_int(unsigned int n)
 		n /= 10;
 	}
 	len = ft_strlen(str);
-	ft_putstr_fd(str, 1);
+	if (write(1, str, len) == -1)
+	{
+		free(str);
+		return (-1);
+	}
 	free(str);
 	return (len);
 }

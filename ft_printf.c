@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:48:31 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/02 14:09:58 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/02 15:43:05 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,30 @@
 
 static int	ft_conversion(char specifier, va_list args)
 {
+	int	result;
+	
+	result = 0;
 	if (specifier == 'c')
-		return (ft_print_char(va_arg(args, int)));
+		result = ft_print_char(va_arg(args, int));
 	else if (specifier == 's')
-		return (ft_print_str(va_arg(args, char *)));
+		result = ft_print_str(va_arg(args, char *));
 	else if (specifier == '%')
 	{
-		write(1, "%", 1);
-		return (1);
+		if (write(1, "%", 1) == -1)
+			return (-1);
+		result = 1;
 	}
 	else if (specifier == 'd' || specifier == 'i')
-		return (ft_print_int(va_arg(args, int)));
+		result = ft_print_int(va_arg(args, int));
 	else if (specifier == 'u')
-		return (ft_print_unsign_int(va_arg(args, unsigned int)));
+		result = ft_print_unsign_int(va_arg(args, unsigned int));
 	else if (specifier == 'x')
-		return (ft_print_hex(va_arg(args, unsigned int), 0));
+		result = ft_print_hex(va_arg(args, unsigned int), 0);
 	else if (specifier == 'X')
-		return (ft_print_hex(va_arg(args, unsigned int), 1));
+		result = ft_print_hex(va_arg(args, unsigned int), 1);
 	else if (specifier == 'p')
-		return (ft_print_ptr(va_arg(args, void *)));
-	return (0);
+		result = ft_print_ptr(va_arg(args, void *));
+	return (result);
 }
 
 int	ft_printf(const char *format, ...)
@@ -41,20 +45,26 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 	int		count;
 	int		i;
+	int		result;
 
+	if (format == NULL)
+		return (-1);
 	count = 0;
 	i = 0;
 	va_start(args, format);
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[++i])
 		{
-			i++;
-			count += ft_conversion(format[i], args);
+			result = ft_conversion(format[i], args);
+			if (result == -1)
+				return (-1);
+			count += result;
 		}
 		else
 		{
-			write(1, &format[i], 1);
+			if (write(1, &format[i], 1) == -1)
+				return (-1);
 			count++;
 		}
 		i++;

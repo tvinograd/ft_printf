@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 16:48:43 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/01 12:17:55 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/02 15:09:18 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,13 @@ int	ft_print_int(int n)
 
 	str = ft_itoa(n);
 	if (!str)
-		return (0);
+		return (-1);
 	len = ft_strlen(str);
-	ft_putstr_fd(str, 1);
+	if (write(1, str, len) == -1)
+	{
+		free(str);
+		return (-1);
+	}
 	free(str);
 	return (len);
 }
