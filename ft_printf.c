@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:48:31 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/02 16:34:33 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/02 16:51:26 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,10 @@ int	ft_printf(const char *format, ...)
 // 	printf_result = printf("NULL: %s\n", null);
 // 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 
+// 	my_result = ft_printf("Empty string: %s\n", "");
+// 	printf_result = printf("Empty string: %s\n", "");
+// 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+
 // 	my_result = ft_printf("Percentage: %%\n");
 // 	printf_result = printf("Percentage: %%\n");
 // 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
@@ -152,6 +156,14 @@ int	ft_printf(const char *format, ...)
 
 // 	my_result = ft_printf("NULL pointer: %p\n", NULL);
 // 	printf_result = printf("NULL pointer: %p\n", NULL);
+// 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+
+// 	my_result = ft_printf("%k\n", NULL);
+// 	printf_result = 1; //printf("%k\n", NULL);
+// 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+
+// 	my_result = ft_printf("%");
+// 	printf_result = 1;
 // 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 
 // 	return (0);
