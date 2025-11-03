@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:46:02 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/02 13:56:22 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/03 18:14:54 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include "libft/libft.h"
-# include <stdio.h>
-# include <limits.h>
+// # include <stdio.h>
+// # include <limits.h>
 
 int	ft_printf(const char *format, ...);
 int	ft_print_char(int c);

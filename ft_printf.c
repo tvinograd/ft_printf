@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:48:31 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/02 16:51:26 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/03 18:18:09 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ static int	ft_conversion(char specifier, va_list args)
 		result = ft_print_hex(va_arg(args, unsigned int), 1);
 	else if (specifier == 'p')
 		result = ft_print_ptr(va_arg(args, void *));
+	else
+	{
+		if (write(1, "%", 1) == -1)
+			return (-1);
+		if (write(1, &specifier, 1) == -1)
+			return (-1);
+		return (2);
+	}
 	return (result);
 }
 
@@ -44,19 +52,19 @@ static int	ft_format(const char *format, int *i, va_list args)
 {
 	int	result;
 
-	if (format[*i] == '%' && format[++(*i)])
+	if (format[*i] == '%')
 	{
+		if (format[*i + 1] == '\0')
+			return (-1);
+		(*i)++;
 		result = ft_conversion(format[*i], args);
 		if (result == -1)
 			return (-1);
 		return (result);
 	}
-	else
-	{
-		if (write(1, &format[*i], 1) == -1)
-			return (-1);
-		return (1);
-	}
+	if (write(1, &format[*i], 1) == -1)
+		return (-1);
+	return (1);
 }
 
 int	ft_printf(const char *format, ...)
@@ -159,11 +167,15 @@ int	ft_printf(const char *format, ...)
 // 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 
 // 	my_result = ft_printf("%k\n", NULL);
-// 	printf_result = 1; //printf("%k\n", NULL);
+// 	printf_result = printf("%k\n", NULL);
 // 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 
-// 	my_result = ft_printf("%");
-// 	printf_result = 1;
+// 	my_result = ft_printf("%", NULL);
+// 	printf_result = printf("%", NULL);
+// 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+
+// 	my_result = ft_printf("%kk %s\n", "Hello");
+// 	printf_result = printf("%kk %s\n", "Hello");
 // 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 
 // 	return (0);
