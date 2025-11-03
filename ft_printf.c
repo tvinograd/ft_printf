@@ -6,7 +6,7 @@
 /*   By: tvinogra <tvinogra@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:48:31 by tvinogra          #+#    #+#             */
-/*   Updated: 2025/11/03 18:18:09 by tvinogra         ###   ########.fr       */
+/*   Updated: 2025/11/03 23:42:58 by tvinogra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,29 @@
 
 static int	ft_conversion(char specifier, va_list args)
 {
-	int	result;
-
-	result = 0;
 	if (specifier == 'c')
-		result = ft_print_char(va_arg(args, int));
+		return (ft_print_char(va_arg(args, int)));
 	else if (specifier == 's')
-		result = ft_print_str(va_arg(args, char *));
+		return (ft_print_str(va_arg(args, char *)));
+	else if (specifier == 'd' || specifier == 'i')
+		return (ft_print_int(va_arg(args, int)));
+	else if (specifier == 'u')
+		return (ft_print_unsign_int(va_arg(args, unsigned int)));
+	else if (specifier == 'x')
+		return (ft_print_hex(va_arg(args, unsigned int), 0));
+	else if (specifier == 'X')
+		return (ft_print_hex(va_arg(args, unsigned int), 1));
+	else if (specifier == 'p')
+		return (ft_print_ptr(va_arg(args, void *)));
 	else if (specifier == '%')
 	{
 		if (write(1, "%", 1) == -1)
 			return (-1);
-		result = 1;
+		return (1);
 	}
-	else if (specifier == 'd' || specifier == 'i')
-		result = ft_print_int(va_arg(args, int));
-	else if (specifier == 'u')
-		result = ft_print_unsign_int(va_arg(args, unsigned int));
-	else if (specifier == 'x')
-		result = ft_print_hex(va_arg(args, unsigned int), 0);
-	else if (specifier == 'X')
-		result = ft_print_hex(va_arg(args, unsigned int), 1);
-	else if (specifier == 'p')
-		result = ft_print_ptr(va_arg(args, void *));
-	else
-	{
-		if (write(1, "%", 1) == -1)
-			return (-1);
-		if (write(1, &specifier, 1) == -1)
-			return (-1);
-		return (2);
-	}
-	return (result);
+	else if (write(1, "%", 1) == -1 || write(1, &specifier, 1) == -1)
+		return (-1);
+	return (2);
 }
 
 static int	ft_format(const char *format, int *i, va_list args)
@@ -90,6 +81,11 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
+
+// These test cases should be inserted in main.c:
+
+// #include "libftprintf.h"
+// #include <stdio.h>
 
 // int	main(void)
 // {
@@ -176,6 +172,14 @@ int	ft_printf(const char *format, ...)
 
 // 	my_result = ft_printf("%kk %s\n", "Hello");
 // 	printf_result = printf("%kk %s\n", "Hello");
+// 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+
+// 	my_result = ft_printf("%%%\n", NULL);
+// 	printf_result = printf("%%%\n", NULL);
+// 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
+
+// 	my_result = ft_printf("% \n", NULL);
+// 	printf_result = printf("% \n", NULL);
 // 	printf("My count: %d, Printf count: %d\n\n", my_result, printf_result);
 
 // 	return (0);
